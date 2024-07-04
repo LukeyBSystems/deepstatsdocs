@@ -18,8 +18,7 @@ DeepStats are also composable; put stats and modifiers on a weapon, then use the
 Finally, customize the post-processing of stats. Convert armour rating into a damage reduction % using a polynomial function. Round your stat values to keep them clean throughout your game. Clamp the maximum value of one stat to another stat, so you can create modifiers like (+10% maximum resistance).
 
 ### 3. Designer and programmer friendly
-Many stat libraries require authoring with either enums which require designers to work with programmers for simple changes and can be lost if enum lists are renamed or re-ordered, or ScriptableObject based architectures which add additional overhead to programming systems as placeholder references need to be used to drag-and-drop into later.
-DeepStats treats both designers and programmers equally. Custom editors are built out for configuring your stat systems, with code generation built into the editors. Designers can add new stat types, conditions, and scalars, then programmers can reference them directly via enums. An Editor Enum class is included which supports re-ordering and renaming enums so that references aren't lost when the enums are modified.
+DeepStats treats both designers and programmers equally. Custom editors are built out for configuring your stat systems, with code generation built into the editors. Designers can add new stat types, conditions, and scalars, then programmers can reference them directly via enums. An Editor Enum class is included which supports re-ordering and renaming enums so that references aren't lost when the enums are modified. All the flexibility of Unity Editor authoring, with the performance and programming convenience of enums.
 
 ## Getting started
 There are a few core concepts that should be understood to get the most out of this library, head over to [getting started](/GettingStarted)
