@@ -3,3 +3,5 @@ description:
 remote_theme: just-the-docs/just-the-docs
 
 url: https://LukeBolly.github.io/
+nav_enabled: true
+color_scheme: dark
