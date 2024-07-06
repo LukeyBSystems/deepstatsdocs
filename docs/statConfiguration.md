@@ -38,6 +38,8 @@ Some examples:
 - in an RTS, you may have a modifier where your units take less damage if they are inside a shield bubble
 
 Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your enums should now be available for use in the editor and in code. Feel free to modify this whenever you like, enums in DeepStats use Editor friendly property drawers so you can re-order and re-name them with the following caveat:
-- if you both re-order and re-name an element before clicking Generate, references will be lost. There is no way to identify the original enum if the name has changed and the position has moved. You can avoid this issue by hitting Generate after each operation.
+
+{: .warning }
+If you both re-order and re-name an element before clicking Generate, references will be lost. There is no way to identify the original enum if the name has changed and the position has moved. You can avoid this issue by hitting Generate after each operation.
 
 Remember to hit the Generate button when you're done.
