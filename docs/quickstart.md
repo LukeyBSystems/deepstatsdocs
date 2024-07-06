@@ -9,27 +9,33 @@ This quickstart guide will get you set up with all the necessary things to get s
 
 ### Step 1: Import the package
 Window -> Package Manager -> Find Deepstats, import. You can exclude the Demo folder if you don't want it. 
+
 If you're going to include the demo folder, it is recommended to import DeepStats into a new project to avoid script errors if you modify the stat configuration.
 
-### Step 2: Create your stat configuration
-Find the place in your assets that you want to store DeepStats data. 
+### Step 2: Create a StatConfiguration
+Find the place in your project that you want to store DeepStats data. 
+
 Right click -> Create -> DeepStats -> Stat Configuration.
 
-Add the stat names to the Stat Types list. They must be unique and a valid name for a C# enum (it will make some attempt to clean up whitespace and capitalisation for you on generation).
-Optional: Add any scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"
+Add the stat names to the Stat Types list. They must be unique and a valid name for a C# enum (it will make some attempt to clean up whitespace and capitalisation for you on generation).\
+Optional: Add any scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"\
 Optional: Add any conditions you might expect to use, these are things such as "HasBoost", "InWater"
 
 When you're done, click the "Generate C# scripts" button.
 
-### Step 3: Configure your stat properties
+### Step 3: Create a StatProperties
 In the same folder as your stat configuration, 
+
 Right click -> Create -> DeepStats -> Stat Properties. This is where you will set default values for your stats, and configure any post-processing.
 
 The default value will be the initial stat value for all instances. 
 Use postprocessing to modify the final value of a stat after modifiers
 
+Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
+
 ### Step 4: Initialise your scene
 Open the scene that will be using DeepStats. 
+
 Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.
 
 Open DeepStatsManager, drag your stat properties Scriptable Object into the reference slot.
