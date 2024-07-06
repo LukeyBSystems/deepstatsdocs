@@ -5,7 +5,7 @@ nav_order: 2
 parent: User Guide
 ---
 
-# StatConfiguration
+# Stat Configuration
 
 The StatConfiguration asset is where you will configure the constants of your stat system.
 
@@ -38,9 +38,9 @@ Some examples:
 - in an RTS, you may have a modifier where your units take less damage if they are inside a shield bubble
 
 {: .note }
-The names for these elements can be whatever you want, except they must be compatible as a C# enum. This means elements must start with a letter or underscore. DeepStats will also remove any whitespace and convert it to CamelCase.
+The names for these elements can be whatever you want, except they must be compatible as a C# enum. This means elements must start with a letter or underscore, it also means no duplicates. DeepStats will also remove any whitespace and convert it to CamelCase.
 
-Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your enums should now be available for use in the editor and in code. Feel free to modify this whenever you like, enums in DeepStats use Editor friendly property drawers so you can re-order and re-name them with the following caveat:
+Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code. You can modify the StatConfiguration and regenerate whenever you like, enums in DeepStats use Editor friendly property drawers so you can re-order and re-name them with the following caveat:
 
 {: .warning }
 If you both re-order and re-name an element before clicking Generate, references will be lost. There is no way to identify the original enum if the name has changed and the position has moved. You can avoid this issue by hitting Generate after each operation.
