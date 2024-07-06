@@ -14,12 +14,9 @@ A stat is some numerical value in your game which you'll use to drive other beha
 
 Stats can be affected by Modifiers which change the final value of the Stat. Some Modifiers may alter the base value of a Stat, others will multiply the base value by some amount. Some modifiers can interact with other Stats such as a conversion from one Stat into another.
 
-Modifiers can be affected by Modifier Scalers which will alter the modifier value, eg.
-- in a racing game, you may have a vehicleDamage scaler which will slow you down and reduce your steering
+Modifiers can be affected by Modifier Scalers which will alter the modifier value, allowing you to create dynamic modifiers that depend on your gameplay.
 
-Modifiers can also be conditionally applied, eg.
-- in an ARPG, you may have a modifier where you do more damage against burning enemies
-- in an RTS, you may have a modifier where your units take less damage if they are inside a shield bubble
+Modifiers can also be conditionally applied by comparing against Modifier Conditions, allowing you to enable / disable modifiers on the fly.
 
 ## All Stats are have a min and max value
 
