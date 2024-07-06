@@ -9,8 +9,8 @@ parent: User Guide
 
 ## What is a Stat?
 A stat is some numerical value in your game which you'll use to drive other behavior, eg.
-- A Speed stat can be read by your CharacterController to set how fast your character moves
-- A Health stat can be read by your UnitController to set your characters maximum health
+- A Speed stat can used in your CharacterController to set how fast your character moves
+- A Health stat can used in your UnitController to set your characters maximum health
 
 Stats can be affected by Modifiers which change the final value of the Stat. Some Modifiers may alter the base value of a Stat, others will multiply the base value by some amount. Some modifiers can interact with other Stats such as a conversion from one Stat into another.
 
@@ -60,8 +60,8 @@ In the same folder as your stat configuration,
 
 Right click -> Create -> DeepStats -> Stat Properties. This is where you will set default values for your stats, and configure any post-processing.
 
-The default value will be the initial stat value for all instances. 
-Use postprocessing to modify the final value of a stat after modifiers
+The default value will be the initial base value for all instances. 
+Use postprocessors to modify the final value of a stat after modifiers.
 
 Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
 
@@ -70,7 +70,7 @@ Open the scene that will be using DeepStats.
 
 Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.
 
-Open DeepStatsManager, drag your stat properties Scriptable Object into the reference slot.
+Open DeepStatsManager, drag your StatProperties Scriptable Object into the reference slot.
 
 ### Step 5: Create a script with DeepStats on it
 
