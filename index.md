@@ -21,7 +21,5 @@ Finally, customize the post-processing of stats. Convert armour rating into a da
 DeepStats treats both designers and programmers equally. Custom editors are built out for configuring your stat systems, with code generation built into the editors. Designers can add new stat types, conditions, and scalars, then programmers can reference them directly via enums. An Editor Enum class is included which supports re-ordering and renaming enums so that references aren't lost when the enums are modified. All the flexibility of Unity Editor authoring, with the performance and programming convenience of enums.
 
 ## Getting started
-There are a few core concepts that should be understood to get the most out of this library, head over to [getting started](/GettingStarted)
+There are a few core concepts that should be understood to get the most out of this library, head over to [getting started](/docs/gettingStarted.md) where you'll find a Quick-Start guide if you just want to get going.
 
-## Quick Start
-If you don't care about that stuff and just want to start adding DeepStats to your game, [click here](/QuickStart)
