@@ -73,7 +73,7 @@ Open DeepStatsManager, drag your StatProperties Scriptable Object into the refer
 
 This could be your player, enemies, a weapon, anything.
 
-```
+```cs
     public class DeepStatsClass : MonoBehaviour
     {
         public List<EditorDeepModifier> Modifiers;
