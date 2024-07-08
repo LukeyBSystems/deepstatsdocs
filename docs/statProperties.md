@@ -24,7 +24,7 @@ Set the default base value for the stat. This will be the starting point for all
 ### PostProcessing
 Use up to 3 final stat values in a post-processing function to modify a stat value.
 
-![example function](../images/postProcessing.jpg)
+![example function](../images/function.jpg)
 
 The expression parser will replace STAT1, STAT2 and STAT3 respectively with the Stat Type selected in the dropdown.
 
