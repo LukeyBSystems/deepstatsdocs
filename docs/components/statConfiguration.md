@@ -9,7 +9,7 @@ parent: User Guide
 
 The StatConfiguration asset is where you will configure the constants of your stat system.
 
-![example configuration](../images/statConfiguration.jpg)
+![example configuration](../../images/statConfiguration.jpg)
 
 You can create an instance of this scriptable object in your project with:\
 Right Click -> Create -> DeepStats -> StatConfiguration
@@ -22,20 +22,25 @@ A StatConfiguration has the following properties:
 These are the Stat Types you'll be using in your project. If it's a numeric value you want to modify in your game, DeepStats is probably a good place for it.\
 Some examples:
 - Classic RPG stats: Maximum Health, Damage, Speed, Armour, Agility, Strength etc.
-- in a platformer you could add a NumberOfJumps stat so the player can unlock double-jump or triple-jump
-- in a racing game you could add a Speed and Steering stat so that the player can customise their vehicle
+- In a platformer you could add a NumberOfJumps stat so the player can unlock double-jump or triple-jump
+- In a racing game you could add a Speed and Steering stat so that the player can customise their vehicle
+
+{: .note }
+Stats are calculated in the order of your StatConfiguration. This is important for dependent Modifiers such as ConvertedTo (Fire converted to Ice) / AddedAs (Fire added as Ice) to prevent circular dependencies. If you want to convert Health to Armour, make sure Health comes first in your StatConfiguration.
+
+![dependent rule](../../images/dependentRule.jpg)
 
 ### Modifier Scalers
 These are aspects of your gameplay that can be used to dynamically scale a Modifier value.
 Some examples:
-- in a racing game, you may have a vehicleDamage scaler which will slow you down and reduce your steering
-- in a survival game, you may have a hunger score which makes you do less melee damage
+- In a racing game, you may have a vehicleDamage scaler which you could use to scale a speed Modifier and a handling Modifier
+- In a survival game, you may have a hungerScore scaler which you could use to scale a max stamina Modifier and a damage Modifier
 
-### Modifier Conditions
-These are aspects of your gameplay that can be used to toggle a modifier on or off. Note that DeepStats will automatically add a 'None' condition for you, this condition is mandatory for the operation of DeepStats.
+### Modifier Tags
+These are less dynamic aspects of your game that can be used to create requirements for a Modifier to activate
 Some examples:
-- in an ARPG, you may have a modifier where you do more damage to the target enemy if they are currently burning
-- in an RTS, you may have a modifier where your units take less damage if they are inside a shield bubble
+- In an ARPG, you may have Human, Minion, Melee, Spell, Undead tags. These could be used to create Modifiers that only apply to the Player and not to their Minions, or to create a spell which does more damage against Undead Melee units.
+- In an RTS, you may have Melee, Ranged, Armoured, Biological, Shielded tags. These could be used to create a shield upgrade Modifier for your faction that only affects Shielded units, or create a unit that has a Modifier giving it bonus damage against Armoured enemies.
 
 {: .note }
 The names for these elements can be whatever you want, except they must be compatible as a C# enum. This means elements must start with a letter or underscore, it also means no duplicates. DeepStats will also remove any whitespace and convert it to CamelCase.
