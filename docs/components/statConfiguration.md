@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Stat Configuration
-nav_order: 2
-parent: User Guide
+nav_order: 1
+parent: Core Components
 ---
 
 # Stat Configuration

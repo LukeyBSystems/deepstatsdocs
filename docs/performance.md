@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Performance Notes
-nav_order: 3
+nav_order: 5
 ---
 
 ## If you have a DeepStats instance which always uses the same DeepConditions, set it
