@@ -42,12 +42,13 @@ Some examples:
 - In an ARPG, you may have Human, Minion, Melee, Spell, Undead tags. These could be used to create Modifiers that only apply to the Player and not to their Minions, or to create a spell which does more damage against Undead Melee units.
 - In an RTS, you may have Melee, Ranged, Armoured, Biological, Shielded tags. These could be used to create a shield upgrade Modifier for your faction that only affects Shielded units, or create a unit that has a Modifier giving it bonus damage against Armoured enemies.
 
-{: .note }
-The names for these elements can be whatever you want, except they must be compatible as a C# enum. This means elements must start with a letter or underscore, it also means no duplicates. DeepStats will also remove any whitespace and convert it to CamelCase.
+## Configuring DeepStats Types
+Stat Types, Scalers and Tags are all Scriptable Objects. You can create them in whatever folder you like within your project. Create a new object by Right Click -> Create -> DeepStats -> Configurations and select the type you want to create.
 
-Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code. You can modify the StatConfiguration and regenerate whenever you like, enums in DeepStats use Editor friendly property drawers so you can re-order and re-name them with the following caveat:
+{: .note }
+The names for these Scriptable Objects must be compatible as a C# enum. This means names must start with a letter or underscore, it also means no duplicate names. DeepStats will also remove any whitespace and convert it to CamelCase. If a name is not compatible, DeepStats will attempt to rename your ScriptableObjects for you to make them valid. To keep things predictable, it is recommended to name your stats following C# enum conventions.
+
+Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code. You can modify the StatConfiguration and regenerate whenever you like, although keep in mind if you have referenced one of the types by its enum instead of its ScriptableObject and you rename the ScriptableObject, you'll need to go back and update the enum reference.
 
 {: .warning }
-If you both re-order and re-name an element before clicking Generate, references will be lost. There is no way to identify the original enum if the name has changed and the position has moved. You can avoid this issue by hitting Generate after each operation.
-
-Remember to hit the Generate button when you're done.
+Don't ever modify the underlying enums directly, always modify them by updating your ScriptableObject configuration then regenerating code. This will ensure everything is in sync.

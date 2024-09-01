@@ -23,7 +23,7 @@ DeepStats also supports a variety of different ways to create interesting modifi
 
 DeepStats are also easily composable with a chaining system. Add DeepStats to a weapon, then use the final weapon stats as base values for your character to scale even further. Alternatively, a collection of modifiers can be applied to many instances of DeepStats, allowing you to apply your Player passive Modifiers to your Minions, or have a set of zone Modifiers which affect every enemy in an area.
 
-Finally, customize the post-processing of stats with the math expression parser built into the editor. Use a polynomial function to convert armour rating into a damage reduction percentage, or clamp your Resistance stat between 0 and 100 then round the final value.
+Finally, customize the post-processing of stats with the math expression parser built into the editor. Use a polynomial function to convert armour rating into a damage reduction percentage, or clamp your Resistance stat between 0 and 100 then round the final value. Additional Modifier types are available to modify the final value of a stat.
 
 For a detailed look at the kinds of modifiers you can create see either the [modifiers overview](/Modifiers) or check out some of the [recipes](/Recipes).
 
