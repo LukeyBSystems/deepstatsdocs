@@ -14,22 +14,22 @@ A stat is some numerical value in your game which you'll use to drive other beha
 - A Health stat can used in your UnitController to set your characters maximum health
 
 ### What is a Modifier?
-Stats can be affected by Modifiers which change the final value of the Stat. Some Modifiers may alter the base value of a Stat, others will multiply the base value by some amount. Some modifiers can interact with other Stats such as a conversion from one Stat into another.
-
-Modifiers can be affected by Modifier Scalers which will alter the modifier value, allowing you to create dynamic modifiers that depend on your gameplay.
-
-Modifiers can also be conditionally applied by checking for Tags on itself or a target.
+Stats can be affected by Modifiers which change the final value of the Stat. Some Modifiers may alter the base value of a Stat, others will multiply the base value by some amount. Some modifiers can interact with other Stats such as a conversion from one Stat into another, eg.
+- +10 Damage
+- +20% Health
+- 2x Armour
 
 ### What is a Tag?
-A Tag is a flag you can set that tells DeepStats which modifiers to apply when calculating stats. Instances might have many tags, depending on how detailed you want your modifiers to be. 
-For example:
-Your main character might have a 'Player' tag, and when they have a sword equipped they might also gain the 'Melee' and 'Sword' tags. 
-The player's 'Raise Zombie' spell would create minions with the 'Minion', 'Melee', 'Unarmed' tags.
+A Tag is a flag you can set that tells DeepStats which Modifiers to apply when calculating stats. Instances might have many tags, and Modifiers can require a subset of them, eg.
+- Increased Damage With Swords
+- Minions Have More Health
+- Spells have extra Critical Chance against Undead
 
 ### What is a Scaler?
-A Scaler is a decimal value that changes how much a Modifier will modify a stat. These are usually aspects of your gameplay that you may use to create interesting Modifiers, such as additional damage for each neaby enemy or reduced movement speed while affected by a Slow status ailment.
-
-
+A Scaler is a decimal value that changes how much a Modifier will modify a stat, allowing you to feed aspects of your gameplay into the DeepStats system to create interesting Modifiers eg.
+- Increased Damage for each nearby enemy
+- Move faster while in water
+- Take less damage while inside a shield bubble
 
 ## Things to know
 

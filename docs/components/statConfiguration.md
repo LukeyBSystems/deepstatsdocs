@@ -51,4 +51,4 @@ The names for these Scriptable Objects must be compatible as a C# enum. This mea
 Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code. You can modify the StatConfiguration and regenerate whenever you like, although keep in mind if you have referenced one of the types by its enum instead of its ScriptableObject and you rename the ScriptableObject, you'll need to go back and update the enum reference.
 
 {: .warning }
-Don't ever modify the underlying enums directly, always modify them by updating your ScriptableObject configuration then regenerating code. This will ensure everything is in sync.
+Don't ever modify the generated enums directly, always modify them by updating your ScriptableObject configuration then regenerating code. This will ensure everything is in sync.
