@@ -7,10 +7,9 @@ parent: Core Components
 
 # Deep Stats Manager
 
-The DeepStatsManager GameObject is required in any scene of your game that needs to run DeepStats. It builds the static data structures and objects needed to perform calculations.
+The DeepStatsManager GameObject is required in any scene of your game that uses DeepStats. It builds the static data structures and objects needed to perform calculations.
 
 The easiest way to add the Manager to the scene is via the toolbar at the top of the Unity Editor, \
 Tools -> DeepStats -> Initialise Scene.
 
 After you've added the DeepStatsManager, locate it in the scene object list and assign your Configuration and Properties ScriptableObjects.
-
