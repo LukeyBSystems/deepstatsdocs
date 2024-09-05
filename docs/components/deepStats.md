@@ -31,3 +31,30 @@ This lets you do things like:
 - Create a set of base stats that all units in your game inherit. Then you have a single place you can add Modifiers if you need to alter the base stats throughout your game.
 
 Add a DeepStats instance as a stat source using the `DeepStats.AddAddedStatsSource(childDeepStats)` method.
+
+## Scripting API
+
+### Properties
+
+| Property | Description |
+|-|-|
+| CachedCount | Number of Modifiers which were able to be cached after setting self DeepConditions on the DeepStats instance with the SetSelfConditions method |
+| FinalValuesAreStale | Boolean indicating if the final values need to be re-calculated by calling `UpdateFinalValues()` |
+| Modifiers | Call `foreach (var mod in Modifiers.Owned)` to read out each Modifier added to this instance, or instead `foreach (var mod in Modifiers.All)` property to read out all Modifiers from either this or any ModifierCollections which are supplying Modifiers. AllCount and OwnedCount are also available |
+
+### Methods
+
+#### AddModifier(Modifier mod)
+Add a Modifier to this instance.
+
+#### RemoveModifier(Modifier mod)
+Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.
+
+#### ClearAllModifiers()
+Remove all owned Modifiers from this instance. Any Modifiers that come from other ModifierCollections will be unaffected.
+
+#### AddAddedStatsSource(DeepStats stats)
+Add a DeepStats instance as stat source to this instance (see 'Add a DeepStats instance as a stat source' above).
+
+#### RemoveAddedStatsSource(DeepStats stats)
+Remove a DeepStats instance from the stat sources of this instance.
