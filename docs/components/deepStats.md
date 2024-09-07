@@ -15,7 +15,7 @@ There are two ways to add Modifiers to a DeepStats instance.
 Add Modifiers directly to a DeepStats instance via the `DeepStats.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that option 2 will be more useful and convenient.
 
 ### Add Modifiers via a DeepModifierCollection
-Create a DeepModifierCollection which can store many Modifiers, then add the whole collection at once to a DeepStats instance using `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any changes made to the DeepModifierCollection will cascade into all of the DeepStats children. This allows you to share a single collection of Modifiers with many DeepStats instances.
+Create a DeepModifierCollection which can store many Modifiers, then add the whole collection at once to a DeepStats instance using `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStats children. This allows you to share a single collection of Modifiers with many DeepStats instances.
 
 For example, this can be used for:
 - Giving your Players a Passive Skill Tree, then applying the same passives to all spells and minions that the Player uses.
