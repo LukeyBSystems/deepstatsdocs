@@ -24,13 +24,9 @@ For example, this can be used for:
 - Create an upgrade system for your RTS, where a Player can research upgrades that affect their entire army.
 
 ## Add a DeepStats instance as a stat source
-A DeepStats instance can also be used as a source of stats to another DeepStats instance. DeepStats added as stat source will be calculated as normal, but then the stat values are added to the parent DeepStats as an 'Add' type Modifier.
+A DeepStats instance can also be used as a source of stats to another DeepStats instance using the `DeepStats.AddAddedStatsSource(childDeepStats)`. When calculating stat values, all of the sources will be calculated first then added as though they are Add style Modifiers.
 
-This lets you do things like:
-- Adding DeepStats to equipment. Create modifiers that affect the equipment, then take the final stats of the equipment and accumulate it onto the player. The Player can have their own set of Modifiers which will then scale those stats again.
-- Create a set of base stats that all units in your game inherit. Then you have a single place you can add Modifiers if you need to alter the base stats throughout your game.
-
-Add a DeepStats instance as a stat source using the `DeepStats.AddAddedStatsSource(childDeepStats)` method.
+You can use this to have multiple layers of stats. For example, a players weapons and armour could have their own Modifiers. The final stats of the equipment will then be scaled again by the players own Modifiers.
 
 ## Scripting API
 
@@ -44,17 +40,35 @@ Add a DeepStats instance as a stat source using the `DeepStats.AddAddedStatsSour
 
 ### Methods
 
-#### AddModifier(Modifier mod)
-Add a Modifier to this instance.
+#### `AddModifier(Modifier mod)`
+Add a Modifier to this instance.  
 
-#### RemoveModifier(Modifier mod)
-Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.
 
-#### ClearAllModifiers()
+#### `RemoveModifier(Modifier mod)`
+Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.  
+
+
+#### `ClearAllModifiers()`
 Remove all owned Modifiers from this instance. Any Modifiers that come from other ModifierCollections will be unaffected.
 
-#### AddAddedStatsSource(DeepStats stats)
+#### `AddAddedStatsSource(DeepStats stats)`
 Add a DeepStats instance as stat source to this instance (see 'Add a DeepStats instance as a stat source' above).
 
-#### RemoveAddedStatsSource(DeepStats stats)
+#### `RemoveAddedStatsSource(DeepStats stats)`
 Remove a DeepStats instance from the stat sources of this instance.
+
+#### `UpdateFinalValues(DeepStats target)`
+Re-calculate final stat values, which will also update the raw values in the process. If there is no target, null can be passed in instead.
+
+#### `GetRawValue(StatType type)`
+Returns a float2 which is the raw value of the StatType. A raw value is the stat range before the random sample and any post-processing
+
+#### `GetFinalValue(StatType type)`
+Returns a float which is the final value of the StatType. A final value is the sampled value from between the raw range, after any post-processing
+
+#### `GetRawModifierTotal(StatType statType, ModifierType modifyType)`
+Returns a float2 which is the total of a Modifier type to a Stat type. You could use this method to show totals used in calculating a stats final values. Acceptable ModifierType's are
+- Add
+- SumMultiply
+- ProductMultiply
+- AddedAs (returns the total added from both AddedAs and ConvertedTo modifier types)

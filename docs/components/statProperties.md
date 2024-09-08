@@ -74,5 +74,17 @@ Here's how Damage Reduction will get calculated when the player has 2500 Armour 
 2. The final Modifier will then double that to 100% Damage Reduction against ranged attackers.
 3. PostProcessing 2 will clamp the 100% down to 95% Damage Reduction against ranged attackers.
 
-### Example 2: 
+### Example 2: Dynamic Stat Limits
+Consider a damage Resistance system where there is a limit on how high Resistance can go, but that limit can also be Modified in special situations.
+- Default Max Resistance is 50%
+- Max Resistance can be modified up to 100%
+- The players Resistance can be modified up to Max Resistance
 
+To fulfil these requirements:
+1. The PostProcessing 2 function for Max Resistance should +50, then clamp it between 0 and 100
+2. The PostProcessing 2 function for Resistance should clamp it between 0 and Max Resistance
+
+Here's how Resistance will get calculated when the player has 100% Resistance, and +25% Max Resistance
+1. Max Resistance will be adjusted from 50% to 75%
+2. Max Resistance will be clamped between 0 and 100% by Post Processing 2 on Max Resistance, so will remain unchanged at 75%
+3. Resistance will be clamped between 0 and Max Resistance (75%) to a final value of 75%
