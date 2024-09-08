@@ -13,3 +13,6 @@ The easiest way to add the Manager to the scene is via the toolbar at the top of
 Tools -> DeepStats -> Initialise Scene.
 
 After you've added the DeepStatsManager, locate it in the scene object list and assign your Configuration and Properties ScriptableObjects.
+
+{: .note }
+DeepStatsManager initialises a number of required properties at startup and does not support updating the Configuration or Properties at runtime
