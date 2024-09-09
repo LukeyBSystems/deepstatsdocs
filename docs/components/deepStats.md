@@ -40,33 +40,49 @@ You can use this to have multiple layers of stats. For example, a players weapon
 
 ### Methods
 
-#### `AddModifier(Modifier mod)`
+```js
+AddModifier(Modifier mod)
+```
 Add a Modifier to this instance.  
 
-
-#### `RemoveModifier(Modifier mod)`
+```js
+RemoveModifier(Modifier mod)
+```
 Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.  
 
-
-#### `ClearAllModifiers()`
+```js
+ClearAllModifiers()
+```
 Remove all owned Modifiers from this instance. Any Modifiers that come from other ModifierCollections will be unaffected.
 
-#### `AddAddedStatsSource(DeepStats stats)`
+```js
+AddAddedStatsSource(DeepStats stats)
+```
 Add a DeepStats instance as stat source to this instance (see 'Add a DeepStats instance as a stat source' above).
 
-#### `RemoveAddedStatsSource(DeepStats stats)`
+```js
+RemoveAddedStatsSource(DeepStats stats)
+```
 Remove a DeepStats instance from the stat sources of this instance.
 
-#### `UpdateFinalValues(DeepStats target)`
+```js
+UpdateFinalValues(DeepStats target)
+```
 Re-calculate final stat values, which will also update the raw values in the process. If there is no target, null can be passed in instead.
 
-#### `GetRawValue(StatType type)`
+```js
+GetRawValue(StatType type)
+```
 Returns a float2 which is the raw value of the StatType. A raw value is the stat range before the random sample and any post-processing
 
-#### `GetFinalValue(StatType type)`
+```js
+GetFinalValue(StatType type)
+```
 Returns a float which is the final value of the StatType. A final value is the sampled value from between the raw range, after any post-processing
 
-#### `GetRawModifierTotal(StatType statType, ModifierType modifyType)`
+```js
+GetRawModifierTotal(StatType statType, ModifierType modifyType)
+```
 Returns a float2 which is the total of a Modifier type to a Stat type. You could use this method to show totals used in calculating a stats final values. Acceptable ModifierType's are
 - Add
 - SumMultiply
