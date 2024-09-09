@@ -1,8 +1,8 @@
 ---
 layout: default
 title: DeepStats
-nav_order: 4
-parent: Core Components
+nav_order: 1
+parent: Runtime Components
 ---
 
 # The DeepStats Class
