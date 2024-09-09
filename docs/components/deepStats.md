@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deep Stats Instances
+title: DeepStats
 nav_order: 4
 parent: Core Components
 ---

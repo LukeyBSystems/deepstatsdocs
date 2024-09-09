@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deep Stats Manager
+title: DeepStatsManager
 nav_order: 3
 parent: Core Components
 ---
