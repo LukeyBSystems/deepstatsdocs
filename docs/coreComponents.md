@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Core Components
+title: Configuration Components
 nav_order: 3
 ---
 
 
 ## DeepStats Core Components
 
-### Setup Components
+### Configuration Components
 
 [StatConfiguration](components/statConfiguration.md)  
 Where you define your Stat types, and Tags and Scalers for your Modifiers and generate the code.

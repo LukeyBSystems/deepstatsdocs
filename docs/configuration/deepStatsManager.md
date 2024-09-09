@@ -2,7 +2,7 @@
 layout: default
 title: DeepStatsManager
 nav_order: 3
-parent: Core Components
+parent: Configuration Components
 ---
 
 # Deep Stats Manager
@@ -15,4 +15,4 @@ Tools -> DeepStats -> Initialise Scene.
 After you've added the DeepStatsManager, locate it in the scene object list and assign your Configuration and Properties ScriptableObjects.
 
 {: .note }
-DeepStatsManager initialises a number of required properties at startup and does not support updating the Configuration or Properties at runtime
+DeepStatsManager initialises a number of required properties at startup and does not support updating the Configuration or Properties at runtime.

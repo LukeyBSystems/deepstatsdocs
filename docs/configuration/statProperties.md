@@ -2,7 +2,7 @@
 layout: default
 title: Stat Properties
 nav_order: 2
-parent: Core Components
+parent: Configuration Components
 ---
 
 # Stat Properties
