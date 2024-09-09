@@ -50,9 +50,7 @@ RemoveModifier(Modifier mod)
 ```
 Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.  
 
-```js
-ClearAllModifiers()
-```
+`ClearAllModifiers()`
 Remove all owned Modifiers from this instance. Any Modifiers that come from other ModifierCollections will be unaffected.
 
 ```js
