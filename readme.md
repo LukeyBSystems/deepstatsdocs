@@ -1,7 +1,7 @@
 Welcome to the public DeepStats repository.
 
 Find the documentation at:
-https://lukebolly.github.io/deepstats.github.io/
+https://lukebolly.github.io/deepstatsdocs/
 
 TODO list:
 - Add a warning in the modifier property drawer when a backwards stat dependency is added (eg. Health declared before Armour, but modifier converts Armour to Health)
