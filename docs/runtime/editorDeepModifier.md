@@ -15,19 +15,19 @@ This is the authoring class for creating Modifiers via the Unity Editor. Use it'
  Adds a flat value to the target stat.  
  eg. `TargetStat + 5`
 
-#### SumMultiply
+### SumMultiply
 Adds a value with all the other SumMultiply mods, before multiplying the target stat.  
 eg. `TargetStat * (1 + mod1 + mod2 + mod3 + ...)` 
 
-#### ProductMultiply
+### ProductMultiply
 Multiplies the target stat by a value.  
 eg. `TargetStat * 2`
 
-#### AddedAs
+### AddedAs
 Multiplies the raw value of DependentStat by a value and adds it to the final TargetStat value.  
 eg. `TargetStat + DependentStat * 0.5`
 
-#### ConvertedTo
+### ConvertedTo
 Multiplies the raw value of DependentStat by a value and adds it to the final TargetStat value.  
 The DependentStat will be reduced by the same amount. 
 eg. `TargetStat + DependentStat * 0.5`
@@ -35,22 +35,22 @@ eg. `TargetStat + DependentStat * 0.5`
 {: .note }
 You cannot convert more than 100% of a StatType, all conversion modifier will be scaled down if their cumulative value exceeds 100%.
 
-#### ModifiersAlsoApplyToStat
+### ModifiersAlsoApplyToStat
 
 
-#### ConvertSelfTags
+### ConvertSelfTags
 
 
-#### ConvertTargetTags
+### ConvertTargetTags
 
 
-#### FinalAdd
+### FinalAdd
 
 
-#### FinalSumMultiply
+### FinalSumMultiply
 
 
-#### FinalSumMultiply
+### FinalSumMultiply
 
 
 ## Order of operations for Stat calculation
