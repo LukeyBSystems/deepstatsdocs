@@ -4,4 +4,4 @@ title: Performance Notes
 nav_order: 5
 ---
 
-## Adding and removing modifiers is slower than changing a ModifierScaler / ModifierCondition
+## If you need to update stats regularly, updating Tags and Scalers is faster than adding and removing Modifiers

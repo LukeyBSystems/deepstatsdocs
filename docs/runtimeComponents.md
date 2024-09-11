@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Runtime Components
+title: Runtime Classes
 nav_order: 4
 ---
 
-# Runtime Components
+# Runtime Classes
 
 [DeepStats](components/deepStats.md)  
 The core of the library, this is where Modifiers are collected and Stats are calculated. Add this to any instance in your game that needs stats.

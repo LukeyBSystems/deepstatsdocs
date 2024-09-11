@@ -34,7 +34,7 @@ A Scaler is a decimal value that changes how much a Modifier will modify a stat,
 ## Things to know
 
 ### All Stats are have a min and max value
-In order to support a common RPG feature of random stat ranges (deals 5-10 damage etc.) without having to create modifiers for each min and max value, DeepStats uses stat ranges for all Stats. Modifiers can set 'same' or 'different' values for the min and max modification. If you don't want a stat to have a range, just leave the 'Set Min / Max Values' property at 'Same' so that the random final value is always the same.
+In order to support a common RPG feature of random stat ranges (deals 5-10 damage etc.) without having to create modifiers for each min and max value, DeepStats uses stat ranges for all Stats. Throughout DeepStats, 'Raw' values refer the stat range value and 'Final' values refer to the randomised value between the range. Modifiers can set 'same' or 'different' values for the min and max modification. If you don't want a stat to have a range, just leave the 'Set Min / Max Values' property at 'Same' so that the random final value is always the same.
 
 ![same min max](../images/minMaxSame.jpg)
 
