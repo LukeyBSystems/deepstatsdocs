@@ -23,9 +23,9 @@ This is the authoring class for creating Modifiers via the Unity Editor. Use it'
 8. The required Tags on the DeepStats instance that has this Modifier for this Modifier to apply
 9. The required Tags on the Target DeepStats instance passed in when calculating stats, for this Modifier to apply.
 
-## Types of Modifier
+## Types of Modifiers
 
-#### Add
+### Add
  Adds a flat value to the target stat.  
  eg. `TargetStat + 5`
 
@@ -76,14 +76,23 @@ Finds any Modifiers which have the Required Tags under Self and creates a copy o
 These operate the same as the non-final Modifier types, except they apply between PostProcessing 1 and 2. They can be used to Modify a Stats' final value.
 
 
-## Order of operations for Stat calculation
+## Order of operations for Stat Calculation
 Stat calculations happen in the following order:
-1. All 'Add' Modifiers are summed together.
-2. Starting with a value of 1, all 'SumMultiply' Modifiers are added. The result is multiplied by the previous value.
-3. Starting with a value of 1, all 'ProductMultiply' Modifiers are multiplied. The result is multiplied by the previous value.
-4. Any conversions or additions to the StatType are then added to the previous value.
-5. Any conversions from the StatType are then remove from the previous value.
-6. A final value is randomised between the min and max raw value.
-7. PostProcessing 1 is applied to the final value
-8. 'Final' type modifiers are applied to the final value
-9. PostProcessing 2 is applied to the final value.
+1. All 'Add' Modifiers are summed together.  
+`Added = mod1 + mod2 + mod3 + ...`
+2. Starting with a value of 1, all 'SumMultiply' Modifiers are added. The result is multiplied by the previous value.  
+`SumMultiplied = (1 + mod1 + mod2 + mod3 + ...) * Added`
+3. Starting with a value of 1, all 'ProductMultiply' Modifiers are multiplied. The result is multiplied by the previous value.  
+`ProductMultiplied = mod1 * mod2 * mod3 * SumMultiplied`
+4. Any conversions or additions TO this StatType are then added.  
+`AddedSources = ProductMultiplied + AddedStats + ConvertedStats`
+5. Any conversions FROM the StatType are then removed.  
+`RawValue = AddedSources * totalConversionFraction`
+6. Raw value is now complete.
+7. PostProcessing 1 is applied to raw value.  
+`pp1 = fn1(RawValue)`
+8. 'Final' type modifiers are applied.  
+`finalMod = (pp1 + finalAdd) * (1 + finalSum1 + finalSum2 + finalSum3 + ...) * finalProduct1 * finalProduct2 * finalProduct3 * ...`
+9. PostProcessing 2 is applied.  
+`finalValue = fn2(finalmod)`
+10. Final value is now complete.
