@@ -69,12 +69,17 @@ Finds any Modifiers which have the Required Tags under Self and creates a copy o
 
 ![same min max](../../images/convertSelfTagModifier.jpg)
 
-### ConvertTargetTags
+For example, the Modifier below would have a second version added that requires a Player tag instead of a Minion Tag.
 
+![same min max](../../images/convertSelfTagsModifierExample.png)
+
+### ConvertTargetTags
+Functions the same as ConvertSelfTags, except it searches for Tags in the Target section instead.
+
+![same min max](../../images/convertTargetTagModifier.png)
 
 ### FinalAdd, FinalSumMultiply, FinalSumMultiply
 These operate the same as the non-final Modifier types, except they apply between PostProcessing 1 and 2. They can be used to Modify a Stats' final value.
-
 
 ## Order of operations for Stat Calculation
 Stat calculations happen in the following order:
@@ -90,9 +95,9 @@ Stat calculations happen in the following order:
 `RawValue = AddedSources * totalConversionFraction`
 6. Raw value is now complete.
 7. PostProcessing 1 is applied to raw value.  
-`pp1 = fn1(RawValue)`
+`pp1 = postprocessing1(RawValue)`
 8. 'Final' type modifiers are applied.  
-`finalMod = (pp1 + finalAdd) * (1 + finalSum1 + finalSum2 + finalSum3 + ...) * finalProduct1 * finalProduct2 * finalProduct3 * ...`
+`finalModified = (pp1 + finalAdd) * (1 + finalSum1 + finalSum2 + finalSum3 + ...) * finalProduct1 * finalProduct2 * finalProduct3 * ...`
 9. PostProcessing 2 is applied.  
-`finalValue = fn2(finalmod)`
+`finalValue = postprocessing2(finalModified)`
 10. Final value is now complete.
