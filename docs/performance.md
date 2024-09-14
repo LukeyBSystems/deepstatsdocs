@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Performance Notes
-nav_order: 5
+nav_order: 6
 ---
 
 ## If you need to update stats regularly, updating Tags and Scalers is faster than adding and removing Modifiers

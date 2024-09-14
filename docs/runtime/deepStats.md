@@ -28,6 +28,9 @@ A DeepStats instance can also be used as a source of stats to another DeepStats 
 
 You can use this to have multiple layers of stats. For example, a players weapons and armour could have their own Modifiers. The final stats of the equipment will then be scaled again by the players own Modifiers.
 
+## Configuring Tags and Scalers
+TODO
+
 ## Scripting API
 
 ### Properties
