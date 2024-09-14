@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Quick Start Guide
-nav_order: 5
+nav_order: 3
 ---
 
 ## Quickstart
@@ -32,7 +32,7 @@ Use postprocessors to modify the final value of a stat after modifiers.
 
 Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
 
-### Step 4: Initialise your scene
+### Step 4: Add a DeepStatsManager to your scene
 Open the scene that will be using DeepStats. 
 
 Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.

@@ -42,19 +42,19 @@ Use up to 3 raw stat values in a post-processing function to obtain a final stat
 The expression parser will replace STAT1, STAT2 and STAT3 respectively with the Stat Type referenced in the field.
 
 The expression parser supports the following operations:
-- Add - +
-- Subtract - -
-- Multiply - *
-- Divide - /
-- Modulo - %
-- Brackets for ordering - ( your_important_func )
-- sine function - SIN(val)
-- cosine function - COS(val)
-- tan function - TAN(val)
-- square root - SQRT(val)
-- exponential - POW(base, power)
-- round - ROUND(val)
-- clamp - CLAMP(val, min, max)
+- Add: +
+- Subtract:
+- Multiply: *
+- Divide: /
+- Modulo: %
+- Brackets for ordering: ( your_important_func )
+- sine function: SIN(val)
+- cosine function: COS(val)
+- tan function: TAN(val)
+- square root: SQRT(val)
+- exponential: POW(base, power)
+- round: ROUND(val)
+- clamp: CLAMP(val, min, max)
 
 If the expression is left blank, the final stat value will be the same as a the raw stat value.
 
@@ -70,7 +70,7 @@ To fulfil these requirements:
 ![dependent rule](../../images/armourFormula.jpg)
 
 Here's how Damage Reduction will get calculated when the player has 2500 Armour and a modifier which adds 2x final Damage Reduction:
-1. PostProcessing 1 will convert 2500 Armour -> 50% Damage Reduction.
+1. PostProcessing 1 will convert 2500 Armour:> 50% Damage Reduction.
 2. The final Modifier will then double that to 100% Damage Reduction against ranged attackers.
 3. PostProcessing 2 will clamp the 100% down to 95% Damage Reduction against ranged attackers.
 
