@@ -101,3 +101,11 @@ Stat calculations happen in the following order:
 9. PostProcessing 2 is applied.  
 `finalValue = postprocessing2(finalModified)`
 10. Final value is now complete.
+
+## Usage Notes
+
+### Modifiers are Value types and should not be updated after creation
+Once a Modifier has been added to a DeepStats instance, it cannot be changed because it is just a copy of the original. If you want to alter the values on a Modifier, you should remove the original Modifier and add a new one with your desired properties.
+
+### Always prefer to create Modifiers using the EditorDeepModifier class
+You can create DeepModifiers directly and this will work fine for simple Modifiers, however the editor provides a number of safety checks to ensure your Modifiers are created correctly so should always be preferred

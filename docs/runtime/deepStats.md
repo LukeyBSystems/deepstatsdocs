@@ -43,10 +43,10 @@ TODO
 
 ### Methods
 
-`AddModifier(Modifier mod)`  
+`AddModifier(EditorDeepModifier mod)`  
 Add a Modifier to this instance.  
 
-`RemoveModifier(Modifier mod)`  
+`RemoveModifier(EditorDeepModifier mod)`  
 Remove a Modifier from this instance. The Modifier will be removed by looking up a matching ModifierIdentifier on the Modifier.  
 
 `ClearAllModifiers()`  

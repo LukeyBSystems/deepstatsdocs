@@ -39,5 +39,3 @@ In order to support a common RPG feature of random stat ranges (deals 5-10 damag
 ![same min max](../images/minMaxSame.jpg)
 
 ![different min max](../images/minMaxDifferent.jpg)
-
-#
