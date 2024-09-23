@@ -12,6 +12,15 @@ The Demos require all of the ScriptableObjects defined in the DeepStats Configur
 
 ## Samples
 ### Sample 1: Modifier Sandbox
-Use this scene to familiarise yourself with DeepStats. Add and remove Modifiers and the stats printed will update in realtime. Take a look at the
+Use this scene to familiarise yourself with DeepStats. Add and remove Modifiers and the stats printed will update in realtime.
 
-## Tests
+### Sample 2: Environmental Effects
+This scene demonstrates the use of Scalers to update the Stats of the Player. The player has 3 Modifiers, and Scalers control their affects when the Player is in water or near trees.
+
+### Sample 3: Equipment Swapping
+This scene demonstrates the use of Tags to conditionally apply Modifiers. You can swap between Unarmed, Sword, or Spear type weapons. You can also randomise the Player modifiers by pressing 'R'. Note how some Modifiers specify that they only apply to Spears or Swords and observe the Stats after swapping weapons. There are also some AddedAs / ConvertedTo Modifiers added to demonstrate what happens when you convert Physical to Elemental Damage.
+
+This scene also utilises the Added Stat Source functionality of DeepStats. Note how the weapons have their own Modifiers and Stats. The final stats of the weapon then become the base stats of the player.
+
+### Sample 4: Summoner and Minions
+This scene demonstrates using a DeepModifierCollection to create a passive skill tree style system where the Players Modifiers can also apply to their Minions. Tags are used to conditionally apply Modifiers depending on the type of DeepStats instance. It also demonstrates the use of a Tag Conversion modifier to grant benefits to the Player from their Minion Modifiers.

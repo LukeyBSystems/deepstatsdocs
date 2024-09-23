@@ -29,7 +29,7 @@ A DeepStats instance can also be used as a source of stats to another DeepStats 
 You can use this to have multiple layers of stats. For example, a players weapons and armour could have their own Modifiers. The final stats of the equipment will then be scaled again by the players own Modifiers.
 
 ## Configuring Tags and Scalers
-TODO
+Each DeepStatsInstance has its own set of Tags and Scalers. These will be used when calculating Modifiers to determine which Modifiers apply and the value of any scaled Modifiers. Set values of these using the `SetScaler` or `SetTag` methods.
 
 ## Scripting API
 
@@ -62,10 +62,13 @@ Remove a DeepStats instance from the stat sources of this instance.
 Re-calculate final stat values, which will also update the raw values in the process. If there is no target, null can be passed in instead.
 
 `GetRawValue(StatType type)`  
-Returns a float2 which is the raw value of the StatType. A raw value is the stat range before the random sample and any post-processing
+Returns a float2 which is the raw value of the StatType. A raw value is the stat range before any post-processing.
 
 `GetFinalValue(StatType type)`  
-Returns a float which is the final value of the StatType. A final value is the sampled value from between the raw range, after any post-processing
+Returns a float2 which is the final value of the StatType. A final value is the value after any post-processing and Final type Modifiers.
+
+`GetRandomFinalValue(StatType type)`
+A convenience function which returns a float sampled from between the range of the final value.
 
 `GetRawModifierTotal(StatType statType, ModifierType modifyType)`  
 Returns a float2 which is the total of a Modifier type to a Stat type. You could use this method to show totals used in calculating a stats final values. Acceptable ModifierType's are
@@ -73,3 +76,9 @@ Returns a float2 which is the total of a Modifier type to a Stat type. You could
 - SumMultiply
 - ProductMultiply
 - AddedAs (returns the total added from both AddedAs and ConvertedTo modifier types)
+
+`SetScaler(ModifierScaler scaler, float value)`
+Sets a scaler value on this DeepStatsInstance.
+
+`SetTag(ModifierTag tag, bool value)`
+Sets a Tag true or false on this DeepStatsInstance.
