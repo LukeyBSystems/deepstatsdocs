@@ -43,15 +43,13 @@ eg. `TargetStat * 2`
 ![same min max](../../images/productMultiplyModifier.jpg)
 
 ### AddedAs
-Multiplies the raw value of DependentStat by a value and adds it to the final TargetStat value.  
-eg. `TargetStat + DependentStat * 0.5`
+The base value of Dependent Stat is converted into Target Stat, and then scaled by any Sum/Product Multiplies which affect either the dependent or target Stat Types. The modifiers are combined together before applying so that the standard order of operations still applies. If a chain of AddedAs is created by converting a stat multiple times, the modifiers of any of the relevant stat types apply to the final value.
+eg. `DependentStat * 0.5 * (1 + dependentSumMultiplies + targetSumMultiplies) * (dependentProductMultiplies * targetProductMultiplies)`
 
 ![same min max](../../images/addedAsModifier.jpg)
 
 ### ConvertedTo
-Multiplies the raw value of DependentStat by a value and adds it to the final TargetStat value.  
-The DependentStat will be reduced by the same amount. 
-eg. `TargetStat + DependentStat * 0.5`
+ConvertedTo operates the same as AddedAs, except additionally the DependentStat will be reduced by the conversion ratio.  
 
 {: .note }
 You cannot convert more than 100% of a Stat. If total conversion exceeds 100%, all conversion Modifiers will be scaled down equally so that the sum is 100%.
