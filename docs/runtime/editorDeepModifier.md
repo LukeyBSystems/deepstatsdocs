@@ -6,7 +6,6 @@ parent: Runtime Classes
 ---
 
 # EditorDeepModifier
-
 This is the authoring class for creating Modifiers via the Unity Editor. Use it's custom editor to create a wide range of Modifiers. Modifiers can be added to DeepStats and DeepModifierCollections
 
 ## Modifier Overview
@@ -104,7 +103,7 @@ Stat calculations happen in the following order:
 
 ## Usage Notes
 
-### Modifiers are Value types and should not be updated after creation
+### Modifiers are Value types
 Once a Modifier has been added to a DeepStats instance, it cannot be changed because it is just a copy of the original. If you want to alter the values on a Modifier, you should remove the original Modifier and add a new one with your desired properties.
 
 ### Always prefer to create Modifiers using the EditorDeepModifier class

@@ -37,7 +37,7 @@ This will apply to the final value of the stat, after any final modifiers. This 
 ### Configuring Post Processing
 Use up to 3 raw stat values in a post-processing function to obtain a final stat value.
 
-![example function](../../images/function.jpg)
+![example function](../../images/armourFormula.jpg)
 
 The expression parser will replace STAT1, STAT2 and STAT3 respectively with the Stat Type referenced in the field.
 
@@ -88,3 +88,5 @@ Here's how Resistance will get calculated when the player has 100% Resistance, a
 1. Max Resistance will be adjusted from 50% to 75%
 2. Max Resistance will be clamped between 0 and 100% by Post Processing 2 on Max Resistance, so will remain unchanged at 75%
 3. Resistance will be clamped between 0 and Max Resistance (75%) to a final value of 75%
+
+![dependent rule](../../images/resistanceFormula.png)

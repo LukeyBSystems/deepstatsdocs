@@ -5,8 +5,8 @@ nav_order: 1
 parent: Runtime Classes
 ---
 
-# The DeepStats Class
-The DeepStats class is how you'll access and modify Stats throughout your game. It contains all of the methods for collecting modifiers and calculating stats.
+# DeepStatsInstance
+The DeepStatsInstance class is how you'll access and modify Stats throughout your game. It contains all of the methods for collecting modifiers and calculating stats.
 
 ## Adding and Removing Modifiers
 There are two ways to add Modifiers to a DeepStats instance.

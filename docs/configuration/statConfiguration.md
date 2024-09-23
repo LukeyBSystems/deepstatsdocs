@@ -14,6 +14,7 @@ The StatConfiguration asset is where you will configure the constants of your st
 You can create an instance of this scriptable object in your project with:\
 Right Click -> Create -> DeepStats -> StatConfiguration
 
+{: .note }
 It is recommended to only have one of these assets in your project, as it will be used to generate the necessary code which the rest of DeepStats will depend on.
 
 ## Configuring DeepStats Types
@@ -40,6 +41,14 @@ Some examples:
 Stats are calculated in the order of your StatConfiguration. This is important for dependent Modifiers such as ConvertedTo (Fire converted to Ice) / AddedAs (Fire added as Ice) to prevent circular dependencies. If you want to convert Health to Armour, make sure Health comes first in your StatConfiguration.
 
 ![dependent rule](../../images/dependentRule.jpg)
+
+#### Stat Parents and Sub-Types
+Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. For example, Elemental Damage and Physical Damage can be a sub-type of a generic Damage Stat Type. Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
+
+To set a parent Stat Type, open the Stat which is going to be a sub-type and assign the parent in the inspector.
+
+![stat parent](../../images/statParent.png)
+
 
 ### Modifier Scalers
 These are aspects of your gameplay that can be used to dynamically scale a Modifier value.

@@ -13,6 +13,11 @@ A stat is some numerical value in your game which you'll use to drive other beha
 - A Speed stat can used in your CharacterController to set how fast your character moves
 - A Health stat can used in your UnitController to set your characters maximum health
 
+Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. For example, Elemental Damage and Physical Damage can be a sub-type of a generic Damage Stat Type. Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
+
+{: .note }
+In order to support a common RPG feature of random stat ranges (deals 5-10 damage etc.) without having to create modifiers for each min and max value, DeepStats uses min and max values for all Stats. Modifiers have a property which allows you to modify the min and max value separately, so if you dont want a stat to have a range you just simply leave this property on it's default setting of 'same'.
+
 ### What is a Modifier?
 Stats can be affected by Modifiers which change the final value of the Stat. Some Modifiers may alter the base value of a Stat, others will multiply the base value by some amount. Some modifiers can interact with other Stats such as a conversion from one Stat into another, eg.
 - +10 Damage
@@ -20,7 +25,7 @@ Stats can be affected by Modifiers which change the final value of the Stat. Som
 - 2x Armour
 
 ### What is a Tag?
-A Tag is a flag you can set that tells DeepStats which Modifiers to apply when calculating stats. Instances might have many tags, and Modifiers can require a subset of them, eg.
+Tags are a set of conditions which Modifiers can check for when calculating stats. Each instance of DeepStats has it's own set of Tags. Instances might have many tags set, and Modifiers can require a subset of them to apply, eg.
 - Increased Damage With Swords
 - Minions Have More Health
 - Spells have extra Critical Chance against Undead
@@ -30,12 +35,4 @@ A Scaler is a decimal value that changes how much a Modifier will modify a stat,
 - Increased Damage for each nearby enemy
 - Move faster while in water
 - Take less damage while inside a shield bubble
-
-## Things to know
-
-### All Stats are have a min and max value
-In order to support a common RPG feature of random stat ranges (deals 5-10 damage etc.) without having to create modifiers for each min and max value, DeepStats uses stat ranges for all Stats. Throughout DeepStats, 'Raw' values refer the stat range value and 'Final' values refer to the randomised value between the range. Modifiers can set 'same' or 'different' values for the min and max modification. If you don't want a stat to have a range, just leave the 'Set Min / Max Values' property at 'Same' so that the random final value is always the same.
-
-![same min max](../images/minMaxSame.jpg)
-
-![different min max](../images/minMaxDifferent.jpg)
+Scalers can be clamped to limit the range of modification. This allows you to create boolean Scalers (clamp between 0 and 1) or just balance your game if a Modifier is too powerful with infinite scaling.

@@ -15,4 +15,4 @@ Tools -> DeepStats -> Initialise Scene.
 After you've added the DeepStatsManager, locate it in the scene object list and assign your Configuration and Properties ScriptableObjects.
 
 {: .note }
-DeepStatsManager initialises a number of required properties at startup and will require a restart if you need to update the Configuration or Properties.
+DeepStatsManager initialises a number of required properties at startup. You will need to restart your game if you need to update the Configuration or Properties.

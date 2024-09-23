@@ -9,7 +9,7 @@ nav_order: 3
 ### Step 1: Import the package
 Window -> Package Manager -> Find Deepstats, import. You can exclude the Demo folder if you don't want it. 
 
-If you're going to include the demo folder, it is recommended to import DeepStats into a new project to avoid script errors if you modify the stat configuration.
+Uncheck the Demo folder import if you don't want it. If you're going to include the demo folder, it is recommended to import DeepStats into a new project to avoid script errors if you modify the stat configuration.
 
 ### Step 2: Create a StatConfiguration
 Find the place in your project that you want to store DeepStats data. 
@@ -25,9 +25,8 @@ When you're done, click the "Generate C# scripts" button.
 ### Step 3: Create a StatProperties
 In the same folder as your stat configuration, 
 
-Right click -> Create -> DeepStats -> Stat Properties. This is where you will set default values for your stats, and configure any post-processing.
+Right click -> Create -> DeepStats -> Stat Properties. This is where you will configure any post-processing.
 
-The default value will be the initial base value for all instances. 
 Use postprocessors to modify the final value of a stat after modifiers.
 
 Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
@@ -37,31 +36,33 @@ Open the scene that will be using DeepStats.
 
 Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.
 
-Open DeepStatsManager, drag your StatProperties Scriptable Object into the reference slot.
+Open DeepStatsManager, set your StatConfiguration and StatProperties Scriptable Objects in the reference slots.
 
 ### Step 5: Create a script with DeepStats on it
 
-This could be your player, enemies, a weapon, anything.
+This could be your player, enemies, a weapon, anything. DeepStatsInstance's use unmanaged memory, so always remember to call Dispose() on them when you're done.
 
 ```cs
+    using UnityEngine;
+    using System.Collections.Generic;
+    using LukeyB.DeepStats.User;
+
     public class DeepStatsClass : MonoBehaviour
     {
         public List<EditorDeepModifier> Modifiers;
 
-        private DeepStats _stats;
-        private DeepConditions _conditions;
+        private DeepStatsInstance _stats;
 
         public void Awake()
         {
-            _stats = new DeepStats();
-            _conditions = new DeepConditions();
+            _stats = new DeepStatsInstance();
 
             foreach (var m in Modifiers)
             {
                 _stats.AddModifier(m.Value);
             }
 
-            _stats.UpdateFinalValues(_conditions, null);
+            _stats.UpdateFinalValues(null);
 
             for (var i = 0; i < DeepStatsConstants.NumStatTypes; i++)
             {
@@ -74,7 +75,6 @@ This could be your player, enemies, a weapon, anything.
         private void OnDestroy()
         {
             _stats.Dispose();
-            _conditions.Dispose();
         }
     }
 ```

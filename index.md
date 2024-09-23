@@ -25,7 +25,7 @@ DeepStats are also easily composable with a chaining system. Add DeepStats to a 
 
 Finally, customize the post-processing of stats with the math expression parser built into the editor. Use a polynomial function to convert armour rating into a damage reduction percentage, or clamp your Resistance stat between 0 and 100 then round the final value. Additional Modifier types are available to modify the final value of a stat.
 
-For a detailed look at the kinds of modifiers you can create see either the [modifiers overview](/Modifiers) or check out some of the [recipes](/Recipes).
+For a detailed look at the kinds of modifiers you can create see either the [modifiers overview](/Modifiers).
 
 ### 2. Simple and Fast
 The faster the library, the more complex and interesting stats and modifiers we can add to our games. DeepStats uses smart data layouts, carefully applied unsafe code, caching where possible, and Unity's Burst compiler to take advantage of the speed of LLVM to maximise performance. DeepStats also does not create any garbage after initialisation. In the stress test with 1000 DeepStats instances each with 1600 assorted modifiers (1.6M total modifiers), it takes around 0.3ms to update all of them on a mid-range CPU. It does not require any multi-threading, background tasks, async-await style programming to reach these speeds, so DeepStats is incredibly simple to use.
@@ -34,6 +34,6 @@ The faster the library, the more complex and interesting stats and modifiers we 
 DeepStats treats both designers and programmers equally. Custom editors are built out for configuring your stats, with code generation built into the editors. Designers can add new stat types, tags and scalars, then programmers can reference stat types, tags and scalers directly via enums. All the flexibility of Unity Editor authoring, with the performance and programming convenience of enums.
 
 ## Getting started
-There are a few core concepts that should be understood to get the most out of this library, head over to [getting started](/docs/gettingStarted.md) to... get started.
+There are a few core concepts that should be understood to get the most out of this library, head over to [Overview](/docs/overview.md) to... get started.
 
 Alternatively if you just want to figure it out on your own, the bare minimum setup guide can be found in the [Quick Start](/docs/quickstart.md) guide.
