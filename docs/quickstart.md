@@ -11,18 +11,19 @@ Window -> Package Manager -> Find Deepstats, import. You can exclude the Demo fo
 
 Uncheck the Demo folder import if you don't want it. If you're going to include the demo folder, it is recommended to import DeepStats into a new project to avoid script errors if you modify the stat configuration.
 
-### Step 2: Create a StatConfiguration
-Find the place in your project that you want to store DeepStats data. 
+### Step 2: Configure your types
+Create Stat Types ScriptableObjects wherever you like in your Assets folder. Right click -> Create -> DeepStats -> Configurations - Stat Type. These are the stats of your stat system.  
+The names must be unique and a valid name for a C# enum (DeepStats will make some attempt to clean up whitespace and capitalisation for you on generation).\
 
-Right click -> Create -> DeepStats -> Stat Configuration.
+Optional: Add any Scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"\
+Optional: Add any Tags you might expect to use, these are things such as "HasBoost", "InWater"
 
-Add the stat names to the Stat Types list. They must be unique and a valid name for a C# enum (it will make some attempt to clean up whitespace and capitalisation for you on generation).\
-Optional: Add any scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"\
-Optional: Add any conditions you might expect to use, these are things such as "HasBoost", "InWater"
+### Step 3: Create a StatConfiguration
+Find the place in your project that you want to store DeepStats data. Right click -> Create -> DeepStats -> Stat Configuration.
 
 When you're done, click the "Generate C# scripts" button.
 
-### Step 3: Create a StatProperties
+### Step 4: Create a StatProperties
 In the same folder as your stat configuration, 
 
 Right click -> Create -> DeepStats -> Stat Properties. This is where you will configure any post-processing.
@@ -31,14 +32,14 @@ Use postprocessors to modify the final value of a stat after modifiers.
 
 Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
 
-### Step 4: Add a DeepStatsManager to your scene
+### Step 5: Add a DeepStatsManager to your scene
 Open the scene that will be using DeepStats. 
 
 Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.
 
 Open DeepStatsManager, set your StatConfiguration and StatProperties Scriptable Objects in the reference slots.
 
-### Step 5: Create a script with DeepStats on it
+### Step 6: Create a script with DeepStats on it
 
 This could be your player, enemies, a weapon, anything. DeepStatsInstance's use unmanaged memory, so always remember to call Dispose() on them when you're done.
 
@@ -79,5 +80,5 @@ This could be your player, enemies, a weapon, anything. DeepStatsInstance's use 
     }
 ```
 
-### Step 6: Use DeepStats
+### Step 7: Use DeepStats
 Add some modifiers to the Modifiers array in the editor. When you run your game, you'll see the calculated stat values in the console logs.
