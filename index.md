@@ -14,5 +14,5 @@ There are a few core concepts that should be understood to get the most out of t
 
 Alternatively if you just want to figure it out on your own, the bare minimum setup guide can be found in the [Quick Start](/docs/quickstart.md) guide.
 
-Looking for help? Join the discord!
-https://discord.gg/fvu9dNPd
+Looking for help? Join the discord!  
+<https://discord.gg/fvu9dNPd>
