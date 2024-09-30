@@ -1,6 +1,6 @@
 ---
 layout: default
-title: DeepStats
+title: DeepStatsInstance
 nav_order: 1
 parent: Runtime Classes
 ---
