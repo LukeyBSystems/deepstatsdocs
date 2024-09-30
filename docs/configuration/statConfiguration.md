@@ -26,7 +26,7 @@ The names for these Scriptable Objects must be compatible as a C# enum. This mea
 Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code as enums. You can modify the StatConfiguration and regenerate whenever you like, although keep in mind if you have referenced one of the types by its enum instead of its ScriptableObject and you rename the ScriptableObject, you'll need to go back and update the enum reference.
 
 {: .warning }
-Don't ever modify the generated enums directly, always modify them by updating your ScriptableObjects then regenerating code. This will ensure everything is in sync.
+Don't ever modify the generated enums directly, always modify them by updating your ScriptableObjects then regenerating code. This will ensure everything remains in sync.
 
 ## Configuration Types
 
@@ -43,7 +43,7 @@ Stats are calculated in the order of your StatConfiguration. This is important f
 ![dependent rule](../../images/dependentRule.jpg)
 
 #### Stat Parents and Sub-Types
-Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. For example, Elemental Damage and Physical Damage can be a sub-type of a generic Damage Stat Type. Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
+Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. For example, Elemental Damage and Physical Damage can be a sub-type of a Damage Stat Type. Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
 
 To set a parent Stat Type, open the Stat which is going to be a sub-type and assign the parent in the inspector.
 

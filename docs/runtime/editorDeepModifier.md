@@ -6,7 +6,7 @@ parent: Runtime Classes
 ---
 
 # EditorDeepModifier
-This is the authoring class for creating Modifiers via the Unity Editor. Use it's custom editor to create a wide range of Modifiers. Modifiers can be added to DeepStats and DeepModifierCollections
+This is the authoring class for creating Modifiers via the Unity Editor. Use it's custom editor to create a wide range of Modifiers. Modifiers can be added to DeepStatsInstances and DeepModifierCollections
 
 ## Modifier Overview
 
@@ -81,28 +81,20 @@ These operate the same as the non-final Modifier types, except they apply betwee
 ## Order of operations for Stat Calculation
 Stat calculations happen in the following order:
 1. All 'Add' Modifiers are summed together.  
-`Added = mod1 + mod2 + mod3 + ...`
 2. Starting with a value of 1, all 'SumMultiply' Modifiers are added. The result is multiplied by the previous value.  
-`SumMultiplied = (1 + mod1 + mod2 + mod3 + ...) * Added`
 3. Starting with a value of 1, all 'ProductMultiply' Modifiers are multiplied. The result is multiplied by the previous value.  
-`ProductMultiplied = mod1 * mod2 * mod3 * SumMultiplied`
 4. Any conversions or additions TO this StatType are then added.  
-`AddedSources = ProductMultiplied + AddedStats + ConvertedStats`
 5. Any conversions FROM the StatType are then removed.  
-`RawValue = AddedSources * totalConversionFraction`
 6. Raw value is now complete.
 7. PostProcessing 1 is applied to raw value.  
-`pp1 = postprocessing1(RawValue)`
 8. 'Final' type modifiers are applied.  
-`finalModified = (pp1 + finalAdd) * (1 + finalSum1 + finalSum2 + finalSum3 + ...) * finalProduct1 * finalProduct2 * finalProduct3 * ...`
 9. PostProcessing 2 is applied.  
-`finalValue = postprocessing2(finalModified)`
 10. Final value is now complete.
 
 ## Usage Notes
 
-### Modifiers are Value types
-Once a Modifier has been added to a DeepStats instance, it cannot be changed because it is just a copy of the original. If you want to alter the values on a Modifier, you should remove the original Modifier and add a new one with your desired properties.
+### EditorDeepModifiers create a DeepModifier value type so they should be treated as immutable.
+Once an EditorDeepModifier has been accessed (by reading the `.value` property), it cannot be changed because it builds a struct internally which is what DeepStatsInstances actually use. This generally means that any changes made to an EditorDeepModifier in the inspector during gameplay will not be reflected in the Modifier.
 
 ### Always prefer to create Modifiers using the EditorDeepModifier class
-You can create DeepModifiers directly and this will work fine for simple Modifiers, however the editor provides a number of safety checks to ensure your Modifiers are created correctly so should always be preferred
+You can create DeepModifier structs directly and this will work fine for simple Modifiers, however the editor provides a number of safety checks to ensure your Modifiers are created correctly so should always be preferred.

@@ -43,5 +43,5 @@ Remove all owned Modifiers from this instance. Any Modifiers that come from othe
 `AddStatsChild(DeepStats child)`  
 Add a DeepStats instance as a child of this collection. Any Modifiers in this collection will now also be part of the DeepStats instances.  
 
-`public void RemoveStatsChild(DeepStats child)`  
+`RemoveStatsChild(DeepStats child)`  
 Removes a previously added instance from the list of Children, removing any Modifiers it was providing at the same time.  

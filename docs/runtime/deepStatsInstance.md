@@ -6,13 +6,16 @@ parent: Runtime Classes
 ---
 
 # DeepStatsInstance
-The DeepStatsInstance class is how you'll access and modify Stats throughout your game. It contains all of the methods for collecting modifiers and calculating stats.
+The DeepStatsInstance class is how you'll access and modify stats throughout your game. It contains all of the methods for collecting modifiers and calculating stats.
+
+{: .note }
+DeepStatsInstance objects contain unmanaged memory. Always call `Dispose()` on them when you're done with them, or in the OnDestroy of the container GameObject.
 
 ## Adding and Removing Modifiers
 There are two ways to add Modifiers to a DeepStats instance.
 
 #### Add Modifiers Directly
-Add Modifiers directly to a DeepStats instance via the `DeepStats.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that option 2 will be more useful and convenient.
+Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that option 2 will be more useful and convenient.
 
 ### Add Modifiers via a DeepModifierCollection
 Create a DeepModifierCollection which can store many Modifiers, then add the whole collection at once to a DeepStats instance using `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStats children. This allows you to share a single collection of Modifiers with many DeepStats instances.
@@ -24,12 +27,13 @@ For example, this can be used for:
 - Create an upgrade system for your RTS, where a Player can research upgrades that affect their entire army.
 
 ## Add a DeepStats instance as a stat source
-A DeepStats instance can also be used as a source of stats to another DeepStats instance using the `DeepStats.AddAddedStatsSource(childDeepStats)`. When calculating stat values, all of the sources will be calculated first then added as though they are Add style Modifiers.
+A DeepStats instance can also be used as a source of stats to another DeepStats instance using the `instance.AddAddedStatsSource(childInstance)`. When calculating stat values, all of the sources will be calculated first then added as though they are Add style Modifiers.
 
 You can use this to have multiple layers of stats. For example, a players weapons and armour could have their own Modifiers. The final stats of the equipment will then be scaled again by the players own Modifiers.
 
 ## Configuring Tags and Scalers
 Each DeepStatsInstance has its own set of Tags and Scalers. These will be used when calculating Modifiers to determine which Modifiers apply and the value of any scaled Modifiers. Set values of these using the `SetScaler` or `SetTag` methods.
+Generally, it's better to reference Tags and Scalers by ScriptableObjects (ModifierTagSO, ModifierScalerSO). There are overloads for setting them that accept ScriptableObjects, and this will make them resilient if you need to rename them.
 
 ## Scripting API
 
@@ -38,7 +42,7 @@ Each DeepStatsInstance has its own set of Tags and Scalers. These will be used w
 | Property | Description |
 |-|-|
 | CachedCount | Number of Modifiers which were able to be cached after setting self DeepConditions on the DeepStats instance with the SetSelfConditions method |
-| FinalValuesAreStale | Boolean indicating if the final values need to be re-calculated by calling `UpdateFinalValues()` |
+| FinalValuesAreStale | Boolean indicating if the final values need to be re-calculated by calling `UpdateFinalValues()`. Any changes to the Modifiers or Tags of this instance will set this to true. |
 | Modifiers | Call `foreach (var mod in Modifiers.Owned)` to read out each Modifier added to this instance, or instead `foreach (var mod in Modifiers.All)` property to read out all Modifiers from either this or any ModifierCollections which are supplying Modifiers. AllCount and OwnedCount are also available |
 
 ### Methods
@@ -78,7 +82,13 @@ Returns a float2 which is the total of a Modifier type to a Stat type. You could
 - AddedAs (returns the total added from both AddedAs and ConvertedTo modifier types)
 
 `SetScaler(ModifierScaler scaler, float value)`
-Sets a scaler value on this DeepStatsInstance.
+Sets a scaler value on this DeepStatsInstance using an enum Scaler.
+
+`SetScaler(ModifierScalerSO scaler, float value)`
+Sets a scaler value on this DeepStatsInstance using a ScriptableObject Scaler.
 
 `SetTag(ModifierTag tag, bool value)`
-Sets a Tag true or false on this DeepStatsInstance.
+Sets a Tag true or false on this DeepStatsInstance using an enum Tag.
+
+`SetTag(ModifierTagSO tag, bool value)`
+Sets a Tag true or false on this DeepStatsInstance using an ScriptableObject Tag

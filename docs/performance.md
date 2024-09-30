@@ -7,7 +7,7 @@ nav_order: 6
 # Performance Notes
 
 ## General Performance Notes
-DeepStats has been written with performance in mind from the start. Generally you shouldn't have to worry about DeepStats affecting your framerate until you start getting into obscene amounts of complex DeepModifiers. On an AMD Ryzen 7 5800X (mid range CPU) running the stress test which has 1000 DeepStatsInstances each recalcuating 1600 assorted DeepModifiers every frame, I get over 300 FPS (3ms calculation time).
+DeepStats has been written with performance in mind from the start. Generally you shouldn't have to worry about DeepStats affecting your framerate until you start getting into obscene amounts of complex DeepModifiers. On an AMD Ryzen 7 5800X (mid range CPU) running the stress test which has 1000 DeepStatsInstances each recalcuating 1600 assorted DeepModifiers every frame, I get over 300 FPS (0.3ms calculation time).
 
 ## Modifier Relative Computational Cost
 In order of least to most expensive DeepModifier types per call of `UpdateFinalValues()`
