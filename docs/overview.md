@@ -34,5 +34,5 @@ Tags are a set of conditions which modifiers can check for when calculating stat
 A Scaler is a decimal value that changes how much a Modifier will modify a stat, allowing you to feed aspects of your gameplay into the DeepStats system to create interesting Modifiers eg.
 - Increased Damage for each nearby enemy
 - Move faster while in water
-- Take less damage while inside a shield bubble
+- Take less damage while inside a shield bubble  
 Scalers can be clamped to limit the range of modification. This allows you to create boolean scalers (clamp between 0 and 1) or just to place a limit if a Modifier is too powerful.

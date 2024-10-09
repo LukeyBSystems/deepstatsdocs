@@ -14,8 +14,8 @@ DeepStatsInstance objects contain unmanaged memory. Always call `Dispose()` on t
 ## Adding and Removing Modifiers
 There are two ways to add Modifiers to a DeepStats instance.
 
-#### Add Modifiers Directly
-Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that option 2 will be more useful and convenient.
+### Add Modifiers Directly
+Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that the next option will be more useful and convenient.
 
 ### Add Modifiers via a DeepModifierCollection
 Create a DeepModifierCollection which can store many Modifiers, then add the whole collection at once to a DeepStats instance using `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStats children. This allows you to share a single collection of Modifiers with many DeepStats instances.

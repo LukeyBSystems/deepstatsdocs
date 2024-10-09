@@ -13,10 +13,10 @@ Uncheck the Demo folder import if you don't want it. If you're going to include 
 
 ### Step 2: Configure your types
 Create Stat Types ScriptableObjects wherever you like in your Assets folder. Right click -> Create -> DeepStats -> Configurations - Stat Type. These are the stats of your stat system.  
-The names must be unique and a valid name for a C# enum (DeepStats will make some attempt to clean up whitespace and capitalisation for you on generation).\
+The names must be unique and a valid name for a C# enum (DeepStats will make some attempt to clean up whitespace and capitalisation for you on generation).  
 
 Optional: Add any Scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"\
-Optional: Add any Tags you might expect to use, these are things such as "HasBoost", "InWater"
+Optional: Add any Tags you might expect to use, these are things such as "Undead", "Ranged"
 
 ### Step 3: Create a StatConfiguration
 Find the place in your project that you want to store DeepStats data. Right click -> Create -> DeepStats -> Stat Configuration.
@@ -41,43 +41,66 @@ Open DeepStatsManager, set your StatConfiguration and StatProperties Scriptable 
 
 ### Step 6: Create a script with DeepStats on it
 
-This could be your player, enemies, a weapon, anything. DeepStatsInstance's use unmanaged memory, so always remember to call Dispose() on them when you're done.
+This could be your player, enemies, a weapon, anything. 
+
+{: .note }
+The DeepStatsInstance class uses unmanaged memory, so always remember to call Dispose() on them when you're done.
 
 ```cs
-    using UnityEngine;
-    using System.Collections.Generic;
-    using LukeyB.DeepStats.User;
+using System.Collections.Generic;
+using LukeyB.DeepStats.User;
+using UnityEngine;
 
-    public class DeepStatsClass : MonoBehaviour
+[System.Serializable]
+public class UnitScaler
+{
+    public ModifierScalerSO Scaler;
+    public float ScalerValue;
+}
+
+public class GameUnit : MonoBehaviour
+{
+    public List<EditorDeepModifier> Modifiers;
+    public List<ModifierTagSO> UnitTags;
+    public List<UnitScaler> UnitScalers;
+
+    private DeepStatsInstance _stats;
+
+    public void Awake()
     {
-        public List<EditorDeepModifier> Modifiers;
+        _stats = new DeepStatsInstance();
 
-        private DeepStatsInstance _stats;
-
-        public void Awake()
+        foreach (var tag in UnitTags)
         {
-            _stats = new DeepStatsInstance();
-
-            foreach (var m in Modifiers)
-            {
-                _stats.AddModifier(m.Value);
-            }
-
-            _stats.UpdateFinalValues(null);
-
-            for (var i = 0; i < DeepStatsConstants.NumStatTypes; i++)
-            {
-                var statType = (StatType)i;
-                var value = _stats.GetFinalValue(statType);
-                Debug.Log($"{statType}: {value}");
-            }
+            _stats.SetTag(tag, true);
         }
 
-        private void OnDestroy()
+        foreach (var scaler in UnitScalers)
         {
-            _stats.Dispose();
+            _stats.SetScaler(scaler.Scaler, scaler.ScalerValue);
+        }
+
+        foreach (var m in Modifiers)
+        {
+            _stats.AddModifier(m.Value);
+        }
+
+        _stats.UpdateFinalValues(null);
+
+        for (var i = 0; i < DeepStatsConstants.NumStatTypes; i++)
+        {
+            var statType = (StatType)i;
+            var value = _stats.GetFinalValue(statType);
+            Debug.Log($"{statType}: {value}");
         }
     }
+
+    private void OnDestroy()
+    {
+        _stats.Dispose();
+    }
+}
+
 ```
 
 ### Step 7: Use DeepStats
