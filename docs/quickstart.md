@@ -12,7 +12,7 @@ Window -> Package Manager -> Find Deepstats, import. You can exclude the Demo fo
 Uncheck the Demo folder import if you don't want it. If you're going to include the demo folder, it is recommended to import DeepStats into a new project to avoid script errors if you modify the stat configuration.
 
 ### Step 2: Configure your types
-Create Stat Types ScriptableObjects wherever you like in your Assets folder. Right click -> Create -> DeepStats -> Configurations - Stat Type. These are the stats of your stat system.  
+Create Stat Types ScriptableObjects wherever you like in your Assets folder. Right click -> Create -> DeepStats - Stat Type. These are the stats of your stat system.  
 The names must be unique and a valid name for a C# enum (DeepStats will make some attempt to clean up whitespace and capitalisation for you on generation).  
 
 Optional: Add any Scalers you might expect to use, these are things that may scale a modifier such as "NearbyTrees", "Number of active poisons"\

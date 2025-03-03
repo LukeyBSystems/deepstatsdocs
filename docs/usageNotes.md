@@ -6,6 +6,9 @@ nav_order: 6
 
 # Usage Notes
 
+## Delete demo folder when no longer needed
+The demo folder contains a number of Stat Types, Tags and Scalers which will get picked up by DeepStats. To prevent getting extra types you don't want, delete the entire demo folder once you're done with it.
+
 ## Using generated enums
 A feature of DeepStats is code generation, so the various types can be accessed directly in code using enums instead of relying on referencing scriptable objects in the inspector. The scriptable object reference based approach can be slow and clunky - it's easy to forget to assign a reference, usages aren't easily searchable, and it requires extra boilerplate code. Using the generated enums can be a lot faster to work with and is my preference, but be aware that they aren't resilient to renaming like the scriptable object workflow is. You'll have to manually fix names in your code if you change your stat configuration. It's up to you to decide which workflow suits you better.
 
