@@ -9,8 +9,5 @@ nav_order: 4
 [StatConfiguration](configuration/statConfiguration.md)  
 Where you define your Stat types, and Tags and Scalers for your Modifiers and generate the code.
 
-[StatProperties](configuration/statProperties.md)   
-Where you add any post-processing functions to the raw stat values to obtain final values.
-
 [DeepStatsManager](configuration/deepStatsManager.md)  
 A GameObject in the Scene where you set the StatConfiguration and active StatProperties. This is required for DeepStats to function.

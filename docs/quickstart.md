@@ -23,23 +23,14 @@ Find the place in your project that you want to store DeepStats data. Right clic
 
 When you're done, click the "Generate C# scripts" button.
 
-### Step 4: Create a StatProperties
-In the same folder as your stat configuration, 
-
-Right click -> Create -> DeepStats -> Stat Properties. This is where you will configure any post-processing.
-
-Use postprocessors to modify the final value of a stat after modifiers.
-
-Most projects will only need one StatProperties, although it can be useful for debugging to swap this out sometimes, for example if you're testing extreme values of a stat.
-
-### Step 5: Add a DeepStatsManager to your scene
+### Step 4: Add a DeepStatsManager to your scene
 Open the scene that will be using DeepStats. 
 
-Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject.
+Then in the toolbar at the top of the Unity Editor, Tools -> DeepStats -> Initialise Scene. This will add a DeepStatsManager gameObject and create a starter StatConfiguration object for you in the Assets directory if your project doesn't already have one.
 
-Open DeepStatsManager, set your StatConfiguration and StatProperties Scriptable Objects in the reference slots.
+Open DeepStatsManager and set your StatConfiguration Scriptable Object in the reference slot.
 
-### Step 6: Create a script with DeepStats on it
+### Step 5: Create a script with DeepStats on it
 
 This could be your player, enemies, a weapon, anything. 
 

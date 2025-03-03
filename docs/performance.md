@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Performance Notes
-nav_order: 6
+nav_order: 7
 ---
 
 # Performance Notes

@@ -7,7 +7,7 @@ parent: Runtime Classes
 
 # DeepModifierCollection
 
-A DeepModifierCollection is a collection for storing logical groups of Modifiers. It doesn't do anything on it's own, rather it can provide it's Modifiers to other DeepStats instances. You are free to add and remove Modifiers from the collection at any time, and it will update the Modifiers on it's DeepStats children appropriately.
+A DeepModifierCollection is a collection for storing logical groups of Modifiers. It doesn't do anything on it's own, rather it can provide it's Modifiers to other DeepStats instances. You are free to add and remove Modifiers from the collection at any time, and it will also update the Modifiers on any child instances.
 
 You may come across a situation where you want many different DeepStats instances to have the same subset of stats. This is a perfect time to use a DeepModifierCollection.
 - A set of zone Modifiers affecting every enemy in an area
@@ -19,6 +19,7 @@ For example, your player character may have:
 - Traits, a collection of Modifiers chosen at the start of a game
 - A passive Modifier tree, which they will allocate points to as they progress
 - A set of buffs and debuffs which can be triggered during gameplay
+
 If you want to tell your players where their Modifiers are coming from, grouping them separately will make this much easier.
 
 ## Scripting API

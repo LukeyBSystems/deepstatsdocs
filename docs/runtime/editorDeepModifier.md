@@ -76,25 +76,15 @@ Functions the same as ConvertSelfTags, except it searches for Tags in the Target
 ![same min max](../../images/convertTargetTagModifier.png)
 
 ### FinalAdd, FinalSumMultiply, FinalSumMultiply
-These operate the same as the non-final Modifier types, except they apply between PostProcessing 1 and 2. They can be used to Modify a Stats' final value.
+These operate the same as the non-final Modifier types, except they apply after all the previous Modifiers.
 
 ## Order of operations for Stat Calculation
 Stat calculations happen in the following order:
 1. All 'Add' Modifiers are summed together.  
-2. Starting with a value of 1, all 'SumMultiply' Modifiers are added. The result is multiplied by the previous value.  
-3. Starting with a value of 1, all 'ProductMultiply' Modifiers are multiplied. The result is multiplied by the previous value.  
-4. Any conversions or additions TO this StatType are then added.  
-5. Any conversions FROM the StatType are then removed.  
+2. Starting with a value of 1, all 'SumMultiply' Modifiers are ADDED together. The result is multiplied by the previous value.  
+3. Starting with a value of 1, all 'ProductMultiply' Modifiers are MULTIPLIED together. The result is multiplied by the previous value.  
+4. Any conversions or 'added-as' TO this StatType are then added.  
+5. Any conversions FROM this StatType are removed, clamping at a maximum of 100% conversion. All conversions will be scaled down if total FROM exceeds 100%  
 6. Raw value is now complete.
-7. PostProcessing 1 is applied to raw value.  
-8. 'Final' type modifiers are applied.  
-9. PostProcessing 2 is applied.  
-10. Final value is now complete.
-
-## Usage Notes
-
-### EditorDeepModifiers create a DeepModifier value type so they should be treated as immutable.
-Once an EditorDeepModifier has been accessed (by reading the `.value` property), it cannot be changed because it builds a struct internally which is what DeepStatsInstances actually use. This generally means that any changes made to an EditorDeepModifier in the inspector during gameplay will not be reflected in the Modifier.
-
-### Always prefer to create Modifiers using the EditorDeepModifier class
-You can create DeepModifier structs directly and this will work fine for simple Modifiers, however the editor provides a number of safety checks to ensure your Modifiers are created correctly so should always be preferred.
+7. 'Final' type modifiers are applied.  
+8. Final value is now complete.

@@ -15,10 +15,13 @@ DeepStatsInstance objects contain unmanaged memory. Always call `Dispose()` on t
 There are two ways to add Modifiers to a DeepStats instance.
 
 ### Add Modifiers Directly
-Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic Stats setup, but otherwise it's more likely that the next option will be more useful and convenient.
+Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic stats setup, but otherwise it's more likely that the next option will be more useful and convenient.
+
+{: .note }
+Even though there is an overload that accepts an EditorDeepModifier object, Modifiers are always stored by their underlying value type so they can be compatible with Burst. This means that any changes to the object will not be reflected in the instance stats. Remember, if you need to change a Modifier, remove it from the stats instance, make the changes, then add it back.
 
 ### Add Modifiers via a DeepModifierCollection
-Create a DeepModifierCollection which can store many Modifiers, then add the whole collection at once to a DeepStats instance using `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStats children. This allows you to share a single collection of Modifiers with many DeepStats instances.
+Create a [DeepModifierCollection](runtime/deepModifierCollection.md) which can store many Modifiers, then register your DeepStatsInstance as a child with `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStatsInstance children. This allows you to share a single collection of Modifiers with many DeepStats instances.
 
 For example, this can be used for:
 - Giving your Players a Passive Skill Tree, then applying the same passives to all spells and minions that the Player uses.
@@ -26,14 +29,13 @@ For example, this can be used for:
 - Easily add and remove sets of Modifiers as your player equips new gear.
 - Create an upgrade system for your RTS, where a Player can research upgrades that affect their entire army.
 
-## Add a DeepStats instance as a stat source
-A DeepStats instance can also be used as a source of stats to another DeepStats instance using the `instance.AddAddedStatsSource(childInstance)`. When calculating stat values, all of the sources will be calculated first then added as though they are Add style Modifiers.
+## Add a DeepStats instance as a stat source to another Instance
+A DeepStats instance can also be used as a source of stats to another DeepStats instance using the `instance.AddAddedStatsSource(childInstance)`. When calculating stat values, all of the source stats will be calculated first then added as though they are Add style Modifiers.
 
-You can use this to have multiple layers of stats. For example, a players weapons and armour could have their own Modifiers. The final stats of the equipment will then be scaled again by the players own Modifiers.
+You can use this to have multiple layers of stats. For example in an ARPG, a players weapons and armour could have their own Stats and Modifiers. The final stats of the equipment will then form the base stats of the player, to be scaled again by the players passive Modifiers.
 
 ## Configuring Tags and Scalers
 Each DeepStatsInstance has its own set of Tags and Scalers. These will be used when calculating Modifiers to determine which Modifiers apply and the value of any scaled Modifiers. Set values of these using the `SetScaler` or `SetTag` methods.
-Generally, it's better to reference Tags and Scalers by ScriptableObjects (ModifierTagSO, ModifierScalerSO). There are overloads for setting them that accept ScriptableObjects, and this will make them resilient if you need to rename them.
 
 ## Scripting API
 

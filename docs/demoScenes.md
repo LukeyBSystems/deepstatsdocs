@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Demo Scenes
-nav_order: 10
+nav_order: 8
 ---
 
 In the Demo/Scenes folder of DeepStats you will find two folders:

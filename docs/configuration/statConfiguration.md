@@ -26,7 +26,7 @@ The names for these Scriptable Objects must be compatible as a C# enum. This mea
 Once you have finished creating these, hit the 'Generate C# scripts' button. A build will be triggered, and your Stats will be available for use in the editor and in code as enums. You can modify the StatConfiguration and regenerate whenever you like, although keep in mind if you have referenced one of the types by its enum instead of its ScriptableObject and you rename the ScriptableObject, you'll need to go back and update the enum reference.
 
 {: .warning }
-Don't ever modify the generated enums directly, always modify them by updating your ScriptableObjects then regenerating code. This will ensure everything remains in sync.
+Don't ever modify the generated C# enum definitions directly, always modify them by updating your ScriptableObjects then regenerating code. This will ensure everything remains in sync.
 
 ## Configuration Types
 
@@ -43,7 +43,11 @@ Stats are calculated in the order of your StatConfiguration. This is important f
 ![dependent rule](../../images/dependentRule.jpg)
 
 #### Stat Parents and Sub-Types
-Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. For example, Elemental Damage and Physical Damage can be a sub-type of a Damage Stat Type. Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
+Stat types can be a sub-type of another stat type - they will inherit all of the Modifiers which also apply to their parent. 
+For example: 
+- Elemental Damage and Physical Damage can be a sub-type of a Damage Stat Type. 
+- Fire, Ice and Lightning Damage can be sub-types of Elemental Damage. 
+- When calculating Fire Damage, it will also receive any modifiers to Damage and Elemental Damage.
 
 To set a parent Stat Type, open the Stat which is going to be a sub-type and assign the parent in the inspector.
 
@@ -51,13 +55,14 @@ To set a parent Stat Type, open the Stat which is going to be a sub-type and ass
 
 
 ### Modifier Scalers
-These are aspects of your gameplay that can be used to dynamically scale a Modifier value.
+These are aspects of your gameplay that can be used to dynamically scale a Modifier value. Scalers are assumed to be changing constantly, so any modifiers that rely on scalers will re-calculate whenever retrieveing stat values.
 Some examples:
 - In a racing game, you may have a vehicleDamage scaler which you could use to scale a speed Modifier and a handling Modifier
 - In a survival game, you may have a hungerScore scaler which you could use to scale a max stamina Modifier and a damage Modifier
 
 ### Modifier Tags
-These are less dynamic aspects of your game that can be used to create requirements for a Modifier to activate
+These are less dynamic aspects of your game that can be used to create requirements for a Modifier to activate. Tags are assumed to rarely change so any modifiers that rely on tags will be calcaulted once and cached. Slightly more compute expensive than a basic modifier but much cheaper than a scaler modifier.
+
 Some examples:
 - In an ARPG, you may have Human, Minion, Melee, Spell, Undead tags. These could be used to create Modifiers that only apply to the Player and not to their Minions, or to create a spell which does more damage against Undead Melee units.
 - In an RTS, you may have Melee, Ranged, Armoured, Biological, Shielded tags. These could be used to create a shield upgrade Modifier for your faction that only affects Shielded units, or create a unit that has a Modifier giving it bonus damage against Armoured enemies.
