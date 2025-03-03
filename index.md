@@ -7,7 +7,7 @@ nav_order: 1
 # Deep Stats
 
 Deep Stats is a high performance, highly flexible stat and modifier authoring system for Unity.   
-Online version (and nicer formatted) documentation available at <https://lukebolly.github.io/deepstatsdocs>
+Online version (and nicer formatted) documentation available at <https://lukeybsystems.github.io/deepstatsdocs>
 
 ## Getting started
 There are a few core concepts that should be understood to get the most out of this library, head over to [Overview](/docs/overview.md) to get started.
