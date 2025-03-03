@@ -21,7 +21,7 @@ Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myM
 Even though there is an overload that accepts an EditorDeepModifier object, Modifiers are always stored by their underlying value type so they can be compatible with Burst. This means that any changes to the object will not be reflected in the instance stats. Remember, if you need to change a Modifier, remove it from the stats instance, make the changes, then add it back.
 
 ### Add Modifiers via a DeepModifierCollection
-Create a [DeepModifierCollection](runtime/deepModifierCollection.md) which can store many Modifiers, then register your DeepStatsInstance as a child with `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStatsInstance children. This allows you to share a single collection of Modifiers with many DeepStats instances.
+Create a [DeepModifierCollection](../runtime/deepModifierCollection.md) which can store many Modifiers, then register your DeepStatsInstance as a child with `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStatsInstance children. This allows you to share a single collection of Modifiers with many DeepStats instances.
 
 For example, this can be used for:
 - Giving your Players a Passive Skill Tree, then applying the same passives to all spells and minions that the Player uses.
