@@ -18,7 +18,7 @@ There are two ways to add Modifiers to a DeepStats instance.
 Add Modifiers directly to a DeepStats instance via the `instance.AddModifier(myModifier)` method. This can be used in simple cases where all you need is a few Modifiers and a basic stats setup, but otherwise it's more likely that the next option will be more useful and convenient.
 
 {: .note }
-Even though there is an overload that accepts an EditorDeepModifier object, Modifiers are always stored by their underlying value type so they can be compatible with Burst. This means that any changes to the object will not be reflected in the instance stats. Remember, if you need to change a Modifier, remove it from the stats instance, make the changes, then add it back.
+Even though there is an overload that accepts an EditorDeepModifier object, Modifiers are always stored by their underlying value type so they can be compatible with Burst. This means that any changes to the object will not be reflected in the instance stats. You'll need to remove the original Modifier and add a new one with the desired properties.
 
 ### Add Modifiers via a DeepModifierCollection
 Create a [DeepModifierCollection](../runtime/deepModifierCollection.md) which can store many Modifiers, then register your DeepStatsInstance as a child with `DeepModifierCollection.AddStatsChild(deepStatsInstance)`. Any Modifiers added or removed from the DeepModifierCollection will cascade into all of the DeepStatsInstance children. This allows you to share a single collection of Modifiers with many DeepStats instances.
@@ -68,13 +68,16 @@ Remove a DeepStats instance from the stat sources of this instance.
 Re-calculate final stat values, which will also update the raw values in the process. If there is no target, null can be passed in instead.
 
 `GetRawValue(StatType type)`  
-Returns a float2 which is the raw value of the StatType. A raw value is the stat range before any post-processing.
+Returns a float2 which is the raw value of the StatType. A raw value is the stat range before any 'final' type modifiers.
 
-`GetFinalValue(StatType type)`  
+`GetFinalRange(StatType type)`  
 Returns a float2 which is the final value of the StatType. A final value is the value after any post-processing and Final type Modifiers.
 
-`GetRandomFinalValue(StatType type)`
+`GetFinalValue(StatType type)`
 A convenience function which returns a float sampled from between the range of the final value.
+
+`[StatType type]`
+Indexer style access, calls GetFinalValue interally but is a nice shorthand for accessing a stat.
 
 `GetRawModifierTotal(StatType statType, ModifierType modifyType)`  
 Returns a float2 which is the total of a Modifier type to a Stat type. You could use this method to show totals used in calculating a stats final values. Acceptable ModifierType's are

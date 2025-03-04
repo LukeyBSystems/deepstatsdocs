@@ -81,7 +81,7 @@ public class GameUnit : MonoBehaviour
         for (var i = 0; i < DeepStatsConstants.NumStatTypes; i++)
         {
             var statType = (StatType)i;
-            var value = _stats.GetFinalValue(statType);
+            var value = _stats[statType];
             Debug.Log($"{statType}: {value}");
         }
     }
