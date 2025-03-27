@@ -1,22 +1,22 @@
 ---
 layout: default
-title: EditorDeepModifier
+title: DeepModifier Extensions
 nav_order: 4
 parent: Runtime Classes
 ---
 
-# Other Modifier Types
+# DeepModifier Extensions
 DeepStats also includes a number of extensions to the EditorDeepModifier to support common use-cases. They demonstrate some ways that you can extend a DeepModifier for more advanced use-cases, or you can use them as-is.
 
 ## TieredModifier
 
 ![Tiered Modifier](../../images/tieredModifier.jpg)
 
-This Modifier extension provides a way to create a tiered set of modifiers built from the same base modifier. Simply call the function on it GetTieredModifier() and pass in which tier, to get a DeepModifier where the 'value' is scaled up by your "Scaling Per Tier". Use this to create one base mod, then do things such as:
+This Modifier extension provides a way to create a tiered set of modifiers built from the same base modifier. Simply call the function on it GetTieredModifier() and pass in which tier, to get a DeepModifier where the 'value' is scaled up by your "Scaling Per Tier". Use this for things such as:
 - randomly roll a tier when creating items to add additional item variety
 - Add an upgrade system for items by increasing the tiers of existing modifiers
 
-This class is included, or modify it further to meet the requirements of your own game
+This class is included in the source, or modify it further to meet the requirements of your own game
 ```cs
     [System.Serializable]
     public class TieredModifier
@@ -39,7 +39,7 @@ This class is included, or modify it further to meet the requirements of your ow
 
 Similar to the previous TieredModifier, this also provides a way to create new modifiers from the same base. Call the GetTieredModifier() function to get a new DeepModifier, where the 'value' increases to the new tier, with an additional random range within the tier.
 
-This class is included, or modify it further to meet the requirements of your own game
+This class is included in the source, or modify it further to meet the requirements of your own game
 ```cs
     [System.Serializable]
     public class TieredRandomizedModifier
